@@ -1,0 +1,104 @@
+/*
+ * timer.c
+ *
+ *  Created on: Sep 18, 2025
+ *      Author: acer
+ */
+#include "timer.h"
+
+int timer1 = 0, timer2 = 0,timer3 = 0, timer4 = 0, timer5 = 0;
+int flag1 = 0, flag2 = 0, flag3 = 0, flag4 = 0, flag5 = 0;
+
+void set1(int timer){
+	timer1 = timer / CYCLE;
+	flag1 = 0;
+}
+void set2(int timer){
+	timer2 = timer / CYCLE;
+	flag2 = 0;
+}
+void set3(int timer){
+	timer3 = timer / CYCLE;
+	flag3 = 0;
+}
+void set4(int timer){
+	timer4 = timer / CYCLE;
+	flag4 = 0;
+}
+void set5(int timer){
+	timer5 = timer / CYCLE;
+	flag5 = 0;
+}
+
+void resetTimer(int timer){
+	switch(timer){
+	case 1:
+		timer1 = 0;
+		flag1 = 0;
+		break;
+	case 2:
+		timer2 = 0;
+		flag2 = 0;
+		break;
+	case 3:
+		timer3 = 0;
+		flag3 = 0;
+		break;
+	case 4:
+		timer4 = 0;
+		flag4 = 0;
+		break;
+	case 5:
+		timer5 = 0;
+		flag5 = 0;
+		break;
+	default:
+		timer1 = 0;
+		timer2 = 0;
+		timer3 = 0;
+		timer4 = 0;
+		timer5 = 0;
+		flag1 = 0;
+		flag2 = 0;
+		flag3 = 0;
+		flag4 = 0;
+		flag5 = 0;
+		break;
+	}
+}
+void timerRun(){
+	if(timer1 > 0){
+		timer1--;
+		if(timer1 <= 0){
+			flag1 = 1;
+		}
+	}
+	if(timer2 > 0){
+			timer2--;
+			if(timer2 <= 0){
+				flag2 = 1;
+			}
+	}
+	if(timer3 > 0){
+			timer3--;
+			if(timer3 <= 0){
+				flag3 = 1;
+			}
+	}
+	if(timer4 > 0){
+			timer4--;
+			if(timer4 <= 0){
+				flag4 = 1;
+			}
+	}
+	if(timer5 > 0){
+			timer5--;
+			if(timer5 <= 0){
+				flag5 = 1;
+			}
+		}
+}
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim){
+	getKeyInput();
+	timerRun();
+}

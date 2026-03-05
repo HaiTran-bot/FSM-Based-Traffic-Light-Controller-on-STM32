@@ -1,0 +1,6 @@
+fsm.c:24:6:segmentUpdateAuto	8	static
+fsm.c:27:6:fsm_run	8	static
+fsm.c:32:6:button0_Signal	8	static
+fsm.c:49:6:fsm_auto_hor	8	static
+fsm.c:126:6:fsm_auto_ver	8	static
+fsm.c:174:6:fsm_man	16	static
